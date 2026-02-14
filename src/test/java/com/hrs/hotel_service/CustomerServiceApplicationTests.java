@@ -1,4 +1,4 @@
-package com.hrs.customer_service;
+package com.hrs.hotel_service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
