@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api/hotel")
+@RequestMapping("api/v1/hotel")
 public class HotelController {
 
     private static final Logger logger = LoggerFactory.getLogger(HotelController.class);
@@ -59,7 +59,7 @@ public class HotelController {
         }
     }
 
-    @PostMapping("/{id}/reserve")
+    @PostMapping("/internal/{id}/reserve")
     public ResponseEntity<?> reserve(
             @PathVariable String id,
             @RequestParam int rooms) {
@@ -69,10 +69,10 @@ public class HotelController {
         if (!isReserved) {
             logger.info("Not Reserved");
             return ResponseEntity.badRequest()
-                    .body("Not enough rooms");
+                    .body(false);
         }
         logger.info("Room Reserved");
-        return ResponseEntity.ok("Reserved");
+        return ResponseEntity.ok(true);
     }
 
     @PostMapping("/{id}/release")
