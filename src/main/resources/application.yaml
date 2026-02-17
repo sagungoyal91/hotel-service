@@ -6,6 +6,14 @@ spring:
   data:
     mongodb:
       uri: mongodb://localhost:27017/hotel_db
+
+  consumer:
+    group-id: hotel-group
+    auto-offset-reset: earliest
+
+    key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
 management:
   endpoints:
     web:
